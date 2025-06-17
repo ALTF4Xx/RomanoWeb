@@ -5,12 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RomanoWeb</title>
   <style>
+    :root {
+      --bg-color: #f0f8ff;
+      --primary: #004080;
+      --accent: #0059b3;
+      --accent-light: #3399ff;
+      --text-main: #333;
+      --text-secondary: #003366;
+      --text-light: white;
+      --card-bg: #fff;
+      --footer-bg: #e6f0ff;
+      --shadow: rgba(0, 64, 128, 0.1);
+    }
+
+    .dark-mode {
+      --bg-color: #1e1e2f;
+      --primary: #a4c8ff;
+      --accent: #3399ff;
+      --accent-light: #66b2ff;
+      --text-main: #f0f0f0;
+      --text-secondary: #cce6ff;
+      --text-light: white;
+      --card-bg: #2a2a40;
+      --footer-bg: #2e3a4e;
+      --shadow: rgba(0, 0, 0, 0.3);
+    }
+
     html, body {
       margin: 0;
+      padding: 0;
       height: 100%;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom right, #004080, #f0f8ff);
-      color: #333;
+      background: linear-gradient(to bottom right, var(--primary), var(--bg-color));
+      color: var(--text-main);
+      transition: all 0.3s ease;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -21,90 +50,121 @@
 
     header {
       width: 100%;
-      background: linear-gradient(to right, #0059b3, #3399ff);
-      color: white;
-      padding: 3rem 1rem;
+      background: linear-gradient(to right, var(--accent), var(--accent-light));
+      color: var(--text-light);
+      padding: 2.5rem 1rem 3.5rem;
       text-align: center;
-      box-shadow: 0 4px 8px rgba(0, 64, 128, 0.15);
+      box-shadow: 0 4px 8px var(--shadow);
+      position: relative;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color: var(--accent);
+      color: var(--text-light);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background-color 0.2s;
+    }
+
+    .toggle-btn:hover {
+      background-color: var(--primary);
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
+      font-size: 2.5rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Dropdown container */
+    .section-select-container {
+      margin-top: 1rem;
+    }
+
+    select#section-select {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--accent);
+      background-color: var(--card-bg);
+      color: var(--primary);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    select#section-select:hover, select#section-select:focus {
+      background-color: var(--accent-light);
+      color: var(--text-light);
+      outline: none;
     }
 
     .container {
       max-width: 1000px;
-      width: 100%;
-      margin: 3rem auto;
+      width: 95%;
+      margin: 2rem auto;
       padding: 0 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .section {
-      width: 100%;
     }
 
     .section-title {
-      font-size: 2.2rem;
-      margin-top: 3rem;
-      margin-bottom: 1rem;
-      color: #004080;
-      /* Removed border-bottom for a cleaner look */
-      padding-bottom: 0.5rem;
+      font-size: 1.8rem;
+      margin: 2.5rem 0 1rem;
+      color: var(--primary);
       text-align: center;
     }
 
     .achievement-card {
-      background: #fff;
-      padding: 2rem;
+      background: var(--card-bg);
+      padding: 1.5rem;
       margin: 0.75rem auto;
       border-radius: 12px;
-      box-shadow: 0 1px 4px rgba(0, 64, 128, 0.1);
-      transition: transform 0.3s ease;
+      box-shadow: 0 1px 4px var(--shadow);
+      transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
       width: 100%;
       max-width: 800px;
-      color: #003366;
+      color: var(--text-secondary);
     }
 
     .achievement-card:hover {
       transform: scale(1.02);
-      box-shadow: 0 4px 15px rgba(0, 64, 128, 0.25);
+      box-shadow: 0 4px 15px var(--shadow);
     }
 
     .achievement-title {
-      font-size: 1.6rem;
-      color: #0059b3;
-      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
     }
 
     .achievement-date {
-      font-size: 0.95rem;
-      color: #336699;
-      margin-bottom: 1.2rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
     }
 
     .achievement-description {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: #004080;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--primary);
     }
-
+# Scary!
     .extra-details {
       display: none;
       margin-top: 1rem;
-      font-size: 1.05rem;
-      color: #336699;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
     }
 
     .read-more-btn {
-      background-color: #0059b3;
+      background-color: var(--accent);
       color: white;
       border: none;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.95rem;
       border-radius: 8px;
       margin-top: 1rem;
       cursor: pointer;
@@ -112,33 +172,93 @@
     }
 
     .read-more-btn:hover {
-      background-color: #003d80;
+      background-color: var(--primary);
     }
 
     footer {
       text-align: center;
-      padding: 1rem 2rem;
+      padding: 1rem;
       font-size: 0.9rem;
-      color: #555;
-      background-color: #e6f0ff;
+      color: var(--text-main);
+      background-color: var(--footer-bg);
       border-radius: 8px;
       max-width: 1000px;
       width: 90%;
-      margin: 3rem auto 2rem;
-      box-shadow: 0 1px 6px rgba(0, 64, 128, 0.1);
+      margin: 2rem auto;
+      box-shadow: 0 1px 6px var(--shadow);
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .achievement-card {
+        padding: 1.2rem;
+      }
+
+      .achievement-title {
+        font-size: 1.2rem;
+      }
+
+      .achievement-description,
+      .extra-details {
+        font-size: 0.95rem;
+      }
+
+      .read-more-btn {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 2rem 1rem 3rem;
+      }
+
+      .container {
+        padding: 0 0.5rem;
+      }
+
+      .achievement-card {
+        padding: 1rem;
+      }
+
+      footer {
+        font-size: 0.85rem;
+        padding: 0.8rem;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
+    <button class="toggle-btn" onclick="toggleTheme()">Toggle Dark Mode</button>
     <h1>RomanoWeb</h1>
     <p>My website, showcasing just some of my positions, achievements and hobbies.</p>
+
+    <div class="section-select-container">
+      <label for="section-select" style="color: var(--text-light); font-weight: 600;">Jump to Section:</label>
+      <select id="section-select" aria-label="Select section to jump to" onchange="jumpToSection(this.value)">
+        <option value="">Select...</option>
+        <option value="firefighting">🚒 Firefighting / EMS / Community</option>
+        <option value="jobs">💼 Job Positions</option>
+        <option value="development">💻 Development</option>
+        <option value="leadership">🧭 Leadership</option>
+      </select>
+    </div>
   </header>
 
   <div class="container">
 
-    <div class="section">
+    <div id="firefighting" class="section">
       <h2 class="section-title">🚒 Firefighting / EMS / Community</h2>
 
       <div class="achievement-card">
@@ -170,21 +290,19 @@
       </div>
     </div>
 
-    <div class="section">
+    <div id="jobs" class="section">
       <h2 class="section-title">💼 Job Positions</h2>
 
       <div class="achievement-card">
         <div class="achievement-title">Chick-Fil-A</div>
         <div class="achievement-date">2024 – Present</div>
         <div class="achievement-description">Front Of House, ensuring a welcoming environment for everyone.</div>
-        <div class="extra-details">
-          Front Of House, general.
-        </div>
+        <div class="extra-details">Front Of House, general.</div>
         <button class="read-more-btn" onclick="toggleDetails(this)">Read more</button>
       </div>
     </div>
 
-    <div class="section">
+    <div id="development" class="section">
       <h2 class="section-title">💻 Development</h2>
 
       <div class="achievement-card">
@@ -208,7 +326,7 @@
       </div>
     </div>
 
-    <div class="section">
+    <div id="leadership" class="section">
       <h2 class="section-title">🧭 Leadership</h2>
 
       <div class="achievement-card">
@@ -230,6 +348,16 @@
         </div>
         <button class="read-more-btn" onclick="toggleDetails(this)">Read more</button>
       </div>
+
+      <div class="achievement-card">
+        <div class="achievement-title">Youth Advisory Member</div>
+        <div class="achievement-date">2024–2025</div>
+        <div class="achievement-description">Served as a committee member that helped Pinellas County improve its services.</div>
+        <div class="extra-details">
+          I helped all sorts of Pinellas services improve, and made suggestions backed by the community of Pinellas to present to Pinellas Park Officials.
+        </div>
+        <button class="read-more-btn" onclick="toggleDetails(this)">Read more</button>
+      </div>
     </div>
 
   </div>
@@ -244,6 +372,18 @@
       const isVisible = details.style.display === "block";
       details.style.display = isVisible ? "none" : "block";
       button.textContent = isVisible ? "Read more" : "Read less";
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    function jumpToSection(sectionId) {
+      if (!sectionId) return; // no action if default option selected
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
   </script>
 
