@@ -81,7 +81,6 @@
       margin-bottom: 0.3rem;
     }
 
-    /* Dropdown container */
     .section-select-container {
       margin-top: 1rem;
     }
@@ -97,10 +96,31 @@
       transition: background-color 0.3s ease;
     }
 
-    select#section-select:hover, select#section-select:focus {
+    select#section-select:hover,
+    select#section-select:focus {
       background-color: var(--accent-light);
       color: var(--text-light);
       outline: none;
+    }
+
+    .download-resume {
+      margin-top: 1.5rem;
+    }
+
+    .download-resume a {
+      text-decoration: none;
+      background-color: var(--text-light);
+      color: var(--accent);
+      font-weight: 600;
+      padding: 0.6rem 1.2rem;
+      border-radius: 10px;
+      transition: background-color 0.3s, color 0.3s;
+      display: inline-block;
+    }
+
+    .download-resume a:hover {
+      background-color: var(--accent);
+      color: white;
     }
 
     .container {
@@ -123,7 +143,7 @@
       margin: 0.75rem auto;
       border-radius: 12px;
       box-shadow: 0 1px 4px var(--shadow);
-      transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+      transition: transform 0.3s ease;
       width: 100%;
       max-width: 800px;
       color: var(--text-secondary);
@@ -151,7 +171,7 @@
       line-height: 1.6;
       color: var(--primary);
     }
-# Scary!
+
     .extra-details {
       display: none;
       margin-top: 1rem;
@@ -187,54 +207,6 @@
       margin: 2rem auto;
       box-shadow: 0 1px 6px var(--shadow);
     }
-
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      .section-title {
-        font-size: 1.5rem;
-      }
-
-      .achievement-card {
-        padding: 1.2rem;
-      }
-
-      .achievement-title {
-        font-size: 1.2rem;
-      }
-
-      .achievement-description,
-      .extra-details {
-        font-size: 0.95rem;
-      }
-
-      .read-more-btn {
-        width: 100%;
-        padding: 0.75rem;
-        font-size: 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header {
-        padding: 2rem 1rem 3rem;
-      }
-
-      .container {
-        padding: 0 0.5rem;
-      }
-
-      .achievement-card {
-        padding: 1rem;
-      }
-
-      footer {
-        font-size: 0.85rem;
-        padding: 0.8rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -246,7 +218,7 @@
 
     <div class="section-select-container">
       <label for="section-select" style="color: var(--text-light); font-weight: 600;">Jump to Section:</label>
-      <select id="section-select" aria-label="Select section to jump to" onchange="jumpToSection(this.value)">
+      <select id="section-select" onchange="jumpToSection(this.value)">
         <option value="">Select...</option>
         <option value="firefighting">🚒 Firefighting / EMS / Community</option>
         <option value="jobs">💼 Job Positions</option>
@@ -254,10 +226,15 @@
         <option value="leadership">🧭 Leadership</option>
       </select>
     </div>
-  </header>
+
+    <div style="margin-top: 1rem;">
+  <a href="Leo_Resume.pdf" download="Leo's Resume.pdf" 
+     style="background-color: var(--accent); color: white; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: bold;">
+    📄 Download Resume
+  </a>
+</div>
 
   <div class="container">
-
     <div id="firefighting" class="section">
       <h2 class="section-title">🚒 Firefighting / EMS / Community</h2>
 
@@ -359,7 +336,6 @@
         <button class="read-more-btn" onclick="toggleDetails(this)">Read more</button>
       </div>
     </div>
-
   </div>
 
   <footer>
@@ -379,7 +355,7 @@
     }
 
     function jumpToSection(sectionId) {
-      if (!sectionId) return; // no action if default option selected
+      if (!sectionId) return;
       const el = document.getElementById(sectionId);
       if (el) {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
