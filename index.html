@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RomanoWeb</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom right, #ff4d4d, #ffffff); /* red to white */
+      color: #f0f0f0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      /* to push footer down if content is short */
+      justify-content: space-between;
+    }
+
+    header {
+      width: 100%;
+      background: linear-gradient(to right, #ff6666, #ffcccc); /* lighter reds */
+      color: #330000;
+      padding: 3rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      color: #660000;
+    }
+
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #330000;
+    }
+
+    .section {
+      width: 100%;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: #cc0000;
+      border-bottom: 2px solid #ff6666;
+      padding-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .achievement-card {
+      background: rgba(255, 230, 230, 0.85);
+      padding: 2rem;
+      margin: 1.5rem auto;
+      border-radius: 16px;
+      box-shadow: 0 3px 12px rgba(204, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+      width: 100%;
+      max-width: 800px;
+      color: #660000;
+    }
+
+    .achievement-card:hover {
+      transform: scale(1.01);
+      box-shadow: 0 6px 15px rgba(204, 0, 0, 0.4);
+    }
+
+    .achievement-title {
+      font-size: 1.6rem;
+      color: #cc0000;
+      margin-bottom: 0.5rem;
+    }
+
+    .achievement-date {
+      font-size: 0.95rem;
+      color: #800000;
+      margin-bottom: 1.2rem;
+    }
+
+    .achievement-description {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .extra-details {
+      display: none;
+      margin-top: 1rem;
+      font-size: 1.05rem;
+      color: #993333;
+    }
+
+    .read-more-btn {
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .read-more-btn:hover {
+      background-color: #990000;
+    }
+
+    footer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+      background-color: #ffcccc;
+      color: #660000;
+    }
+
+    .footer-box {
+      background: #fff0f0;
+      border: 1.5px solid #cc0000;
+      padding: 0.75rem 1.25rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 0 8px rgba(204, 0, 0, 0.15);
+      user-select: none;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>RomanoWeb</h1>
+    <p>My website, showcasing just some of my positions, achievements and hobbies.</p>
+  </header>
+
+  <div class="container">
+
+    <div class="section">
+      <h2 class="section-title">🚒 Firefighting / EMS / Community</h2>
+
+      <div class="achievement-card">
+        <div class="achievement-title">Florida Public Service Association (FPSA)</div>
+        <div class="achievement-date">2023 - Present</div>
+        <div class="achievement-description">Participated in FPSA Conferences 2024 and 2025.</div>
+        <div class="extra-details">
+          I have been awarded many times in Search and Rescue, Firefigthing Agility, Call Logging, Firefighting Honor Guard, and Firefigthing Exam scores.
+        </div>
+        <button class="read-more-btn" onclick="toggleDetails(this)">Read more</button>
+      </div>
+
+      <div class="achievement-card">
+        <div class="achievement-title">Actively Studying and Participating in...</div>
+        <div class="achievement-date">2023 – Present</div>
+        <div class="achievement-description">Currently studying Emergency Medicine, Emergency Planning & Response, NIMS, FEMA Protocols and ALCS.</div>
+        <div class="extra-details"></div>
+        <button class="read-more-btn" onclick="toggleDetails(this)">Read more</button>
+      </div>
+
+      <div class="achievement-card">
+        <div class="achievement-title">Active Positions</div>
+        <div class="achievement-date">2023 – Present</div>
+        <div class="achievement-description">Active Fire Cadet, FPSA PPHS Vice President, and Youth Advisor in Pinellas Park.</div>
+        <div class="extra-details">
+          Often involved in many community events, such as National Night Out, Recreational Events, and Youth Advisory Committee.
+        </div>
+        <button class="read-more-btn" onclick="toggleDetails(this)">Read more</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">💼 Job Positions</h2>
+
+      <div class="achievement-card">
+        <div class="achievement-title">Chick-Fil-A</div>
+        <div class="achievement-date">2024 – Present</div>
+        <div class="achievement-description">Front Of House, ensuring a welcoming enviorment for everyone.</div>
+        <div class="extra-details">
+          Front Of House, general.
+        </div>
+        <button class="read-more-btn" onclick="toggleDetails(this)">Read more</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">💻 Development</h2>
+
+      <div class="achievement-card">
+        <div class="achievement-title">Dispatch Dashboard App</div>
+        <div class="achievement-date">2025</div>
+        <div class="achievement-description">Built a Open Source Linux port for LA:RP Dispatch & Communications Dashboard.</div>
+        <div class="extra-details">
+          Packaged using PyInstaller and created a `.deb` installer for single-click deployment.
+        </div>
+        <button class="read-more-btn" onclick="toggleDetails(this)">Read more</button>
+      </div>
+
+      <div class="achievement-card">
+        <div class="achievement-title">Passion Projects. (Topicals, LXRDatabase)</div>
+        <div class="achievement-date">2022 - Present</div>
+        <div class="achievement-description">Created many websites for passions projects, such as LXRDatabase, and topicals.</div>
+        <div class="extra-details">
+          These websites were designed for one thing in mind - the community around these passion projects. These websites connected like minded people and encouraged activity.
+        </div>
+        <button class="read-more-btn" onclick="toggleDetails(this)">Read more</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">🧭 Leadership</h2>
+
+      <div class="achievement-card">
+        <div class="achievement-title">FPSA Secretary</div>
+        <div class="achievement-date">2023</div>
+        <div class="achievement-description">Led a team of EMR Students through the 2024-2025 FPSA Year as Secretary.</div>
+        <div class="extra-details">
+          Coordinated with other organizations, providing clear and accurate information for the FPSA State Board.
+        </div>
+        <button class="read-more-btn" onclick="toggleDetails(this)">Read more</button>
+      </div>
+
+      <div class="achievement-card">
+        <div class="achievement-title">Current PPHS FPSA Vice President</div>
+        <div class="achievement-date">2025-2026</div>
+        <div class="achievement-description">Planning massive changes, introducing bylaws, ensuring accountability, and a maintained schedule for years to come.</div>
+        <div class="extra-details">
+          I plan to refer to the doctrine of the official FPSA State Board, which has been neglected for years. It's time to bring proper leadership to PPHS FPSA!
+        </div>
+        <button class="read-more-btn" onclick="toggleDetails(this)">Read more</button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-box">
+      &copy; 2025 Programmed and maintained by Leonardo Romano. Current as of June, 2025. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    function toggleDetails(button) {
+      const details = button.previousElementSibling;
+      const isVisible = details.style.display === "block";
+      details.style.display = isVisible ? "none" : "block";
+      button.textContent = isVisible ? "Read more" : "Read less";
+    }
+  </script>
+
+</body>
+</html>
