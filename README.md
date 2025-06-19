@@ -1,6 +1,5 @@
-The repository of my website, RomanoWeb, that showcases my professional achievements. 
-
-This website runs on GitHub pages and is entirely open source, like all of my projects.
+The repository of my website, RomanoWeb, that showcases my professional achievements. This website runs on GitHub pages and is entirely open source, like all of my projects.
+You can contact me at cubemasterplayer@gmail.com
 
 Thank you!
 
